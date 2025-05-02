@@ -4,7 +4,19 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
-  const [form, setForm] = useState({ name: "", quantity: "", description: "" });
+
+  const [form, setForm] = useState({
+    medicineId: "",
+    name: "",
+    brand: "",
+    dosageForm: "",
+    quantity: "",
+    price: "",
+    expirationDate: "",
+    prescriptionRequired: false,
+    description: "",
+  });
+  
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -47,7 +59,18 @@ export default function Home() {
         body: JSON.stringify(form),
       });
 
-      setForm({ name: "", quantity: "", description: "" });
+      setForm({
+        medicineId: "",
+        name: "",
+        brand: "",
+        dosageForm: "",
+        quantity: "",
+        price: "",
+        expirationDate: "",
+        prescriptionRequired: false,
+        description: "",
+      });
+      
       setEditingId(null);
       fetchItems();
     } catch (err) {
@@ -56,9 +79,19 @@ export default function Home() {
   };
 
   const handleEdit = (item) => {
-    setForm({ name: item.name, quantity: item.quantity, description: item.description });
-    setEditingId(item._id);
-  };
+  setForm({
+    medicineId: item.medicineId,
+    name: item.name,
+    brand: item.brand,
+    dosageForm: item.dosageForm,
+    quantity: item.quantity,
+    price: item.price,
+    expirationDate: item.expirationDate?.split("T")[0] || "",
+    prescriptionRequired: item.prescriptionRequired,
+    description: item.description,
+  });
+  setEditingId(item._id);
+};
 
   const handleDelete = async (id) => {
     try {
@@ -87,33 +120,18 @@ export default function Home() {
       <section style={{ marginBottom: "30px" }}>
         <h2>{editingId ? "Edit Item" : "Add New Item"}</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Item Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            style={{ marginRight: "10px", width: "30%" }}
-          />
-          <input
-            type="number"
-            name="quantity"
-            placeholder="Quantity"
-            value={form.quantity}
-            onChange={handleChange}
-            required
-            min={1}
-            style={{ marginRight: "10px", width: "20%" }}
-          />
-          <input
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={form.description}
-            onChange={handleChange}
-            style={{ marginRight: "10px", width: "30%" }}
-          />
+          <input type="text" name="medicineId" placeholder="Medicine ID" value={form.medicineId} onChange={handleChange} required />
+          <input type="text" name="name" placeholder="Medicine Name" value={form.name} onChange={handleChange} required />
+          <input type="text" name="brand" placeholder="Brand" value={form.brand} onChange={handleChange} required />
+          <input type="text" name="dosageForm" placeholder="Dosage Form (e.g., tablet)" value={form.dosageForm} onChange={handleChange} required />
+          <input type="number" name="quantity" placeholder="Quantity" value={form.quantity} onChange={handleChange} required min={1} />
+          <input type="number" name="price" placeholder="Price" value={form.price} onChange={handleChange} required min={0} />
+          <input type="date" name="expirationDate" placeholder="Expiration Date" value={form.expirationDate} onChange={handleChange} required />
+          <label>
+          <input type="checkbox" name="prescriptionRequired" checked={form.prescriptionRequired} onChange={(e) => setForm({ ...form, prescriptionRequired: e.target.checked })} />
+          Prescription Required
+          </label>
+          <input type="text" name="description" placeholder="Description" value={form.description} onChange={handleChange} />
           <button type="submit">{editingId ? "Update" : "Add"}</button>
         </form>
       </section>
@@ -125,18 +143,19 @@ export default function Home() {
           <p>Loading items...</p>
         ) : items.length > 0 ? (
           <ul>
-            {items.map((item) => (
-              <li key={item._id} style={{ marginBottom: "10px" }}>
-                <strong>{item.name}</strong> (Qty: {item.quantity}) — {item.description}
-                <button onClick={() => handleEdit(item)} style={{ marginLeft: "10px" }}>
-                  Edit
-                </button>
-                <button onClick={() => handleDelete(item._id)} style={{ marginLeft: "5px" }}>
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
+  {items.map((item) => (
+    <li key={item._id} style={{ marginBottom: "10px" }}>
+      <strong>{item.name}</strong> (ID: {item.medicineId}) — {item.brand}, {item.dosageForm}, Qty: {item.quantity}, Price: ${item.price}  
+      <br />
+      Exp: {item.expirationDate?.split("T")[0]} | Rx: {item.prescriptionRequired ? "Yes" : "No"}  
+      <br />
+      {item.description}
+      <button onClick={() => handleEdit(item)} style={{ marginLeft: "10px" }}>Edit</button>
+      <button onClick={() => handleDelete(item._id)} style={{ marginLeft: "5px" }}>Delete</button>
+    </li>
+  ))}
+</ul>
+
         ) : (
           <p>No inventory items found.</p>
         )}
