@@ -1,0 +1,38 @@
+# === Node modules ===
+frontend/node_modules/
+backend/node_modules/
+
+# === Environment files ===
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# === Logs ===
+*.log
+logs/
+
+# === Build artifacts ===
+frontend/build/
+backend/dist/
+
+# === Dependency locks ===
+package-lock.json
+yarn.lock
+
+# === OS/system files ===
+.DS_Store
+Thumbs.db
+
+# === Editor/IDE settings ===
+.vscode/
+.idea/
+*.swp
+
+# === Test coverage ===
+coverage/
+
+# === Misc ===
+*.tgz
+dump/
