@@ -7,9 +7,9 @@
   /* Sidebar (Dashboard) */
   .sidebar {
     width: 247px; /* Fixed width for sidebar */
-    background-color: #f8f9fa;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #d9d9d9; /* Light gray right border line */
   }
   
   .sidebar h2 {
@@ -45,8 +45,10 @@
   
   /* Styling for the rest of the page (form, table) */
   h1, h2 {
-    color: #333;
+    color: #606060;
     font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
   }
   
   button {
@@ -74,31 +76,38 @@
   /* Table styling */
   table {
     width: 100%;
-    border-collapse: collapse;
   }
   
   thead th {
     color: #0077B6;
     font-family: "Inter", sans-serif;
     padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #f4f4f4;
-  }
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;        /* Prevents line breaks */
+    overflow: hidden;           /* Hides overflow text */
+}
+
   
   tbody td {
     color: #606060;
     padding: 10px;
-    border: 1px solid #ddd;
     font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #d9d9d9;
   }
   
   td button {
-    padding: 6px 12px;
+    width: 85px;           /* Explicit width */
+    height: 33px;          /* Explicit height */
+    padding: 0;            /* Reset padding to avoid extra size */
     font-size: 14px;
-    margin: 0 5px;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
-  }
+  }  
   
   td button:hover {
     background-color: #005f8a;
@@ -133,11 +142,27 @@
     background-color: #0077B6;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
   }
   
   button:hover {
     background-color: #005f8d;
+  }
+  
+  .add-button-container {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    display: flex;          /* Flexbox for layout */
+    justify-content: flex-start; /* Aligns button to the left */
+    width: 100%;            /* Ensures it takes full width */
+    margin-top: 10px;
+    padding-left: 15px;     /* Creates space on the left side */
+  }
+  
+  
+  .add-button-container button {
+    width: 85px;            /* Fixed width */
+    height: 33px;           /* Fixed height */
   }
   

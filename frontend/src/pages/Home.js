@@ -43,8 +43,18 @@ export default function Home() {
   };
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value, type } = e.target;
+  
+    const transformedValue =
+      type === "checkbox"
+        ? e.target.checked
+        : typeof value === "string"
+        ? value.toUpperCase()
+        : value;
+  
+    setForm({ ...form, [name]: transformedValue });
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -93,8 +103,9 @@ export default function Home() {
       description: item.description,
     });
     setEditingId(item._id);
-    setShowModal(true); // Open modal for editing
+    setShowModal(true);
   };
+  
 
   const handleDelete = async (id) => {
     try {
@@ -142,107 +153,117 @@ export default function Home() {
           <li>Item Management</li>
           <li>Reports</li>
           <li>Settings</li>
+          <li><button onClick={handleLogout}>Logout</button></li>
         </ul>
       </div>
 
       {/* Main Content */}
       <div className="main-content">
-        <h1>Inventory Management</h1>
-        <button onClick={handleLogout}>Logout</button>
-        <button onClick={handleAddItemClick}>Add New Item</button>
-
         {/* Modal (Form) */}
         {showModal && (
-          <div className="modal-overlay">
-            <div className="modal">
-              <h2>{editingId ? "Edit Item" : "Add New Item"}</h2>
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="medicineId"
-                  placeholder="Medicine ID"
-                  value={form.medicineId}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Medicine Name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  name="brand"
-                  placeholder="Brand"
-                  value={form.brand}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  name="dosageForm"
-                  placeholder="Dosage Form (e.g., tablet)"
-                  value={form.dosageForm}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="number"
-                  name="quantity"
-                  placeholder="Quantity"
-                  value={form.quantity}
-                  onChange={handleChange}
-                  required
-                  min={1}
-                />
-                <input
-                  type="number"
-                  name="price"
-                  placeholder="Price"
-                  value={form.price}
-                  onChange={handleChange}
-                  required
-                  min={0}
-                />
-                <input
-                  type="date"
-                  name="expirationDate"
-                  placeholder="Expiration Date"
-                  value={form.expirationDate}
-                  onChange={handleChange}
-                  required
-                />
-                <label>
-                  <input
-                    type="checkbox"
-                    name="prescriptionRequired"
-                    checked={form.prescriptionRequired}
-                    onChange={(e) =>
-                      setForm({ ...form, prescriptionRequired: e.target.checked })
-                    }
-                  />
-                  Prescription Required
-                </label>
-                <input
-                  type="text"
-                  name="description"
-                  placeholder="Description"
-                  value={form.description}
-                  onChange={handleChange}
-                />
-                <button type="submit">{editingId ? "Update" : "Add"}</button>
-                <button type="button" onClick={handleCloseModal}>Close</button>
-              </form>
-            </div>
-          </div>
-        )}
+  <div className="modal-overlay">
+    <div className="modal">
+      <h2>{editingId ? "Edit Item" : "Add New Item"}</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="medicineId"
+          placeholder="Medicine ID"
+          value={form.medicineId}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="name"
+          placeholder="Medicine Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="brand"
+          placeholder="Brand"
+          value={form.brand}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="dosageForm"
+          placeholder="Dosage Form (e.g., tablet)"
+          value={form.dosageForm}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="quantity"
+          placeholder="Quantity"
+          value={form.quantity}
+          onChange={handleChange}
+          required
+          min={1}
+        />
+        <input
+          type="number"
+          name="price"
+          placeholder="Price"
+          value={form.price}
+          onChange={handleChange}
+          required
+          min={0}
+        />
+        <input
+          type="date"
+          name="expirationDate"
+          placeholder="Expiration Date"
+          value={form.expirationDate}
+          onChange={handleChange}
+          required
+        />
+        <label>
+          <input
+            type="checkbox"
+            name="prescriptionRequired"
+            checked={form.prescriptionRequired}
+            onChange={(e) =>
+              setForm({ ...form, prescriptionRequired: e.target.checked })
+            }
+          />
+          Prescription Required
+        </label>
+        <input
+          type="text"
+          name="description"
+          placeholder="Description"
+          value={form.description}
+          onChange={handleChange}
+        />
+        <button type="submit">{editingId ? "Update" : "Add"}</button>
+        <button type="button" onClick={handleCloseModal}>Close</button>
 
+        {/* Delete button only appears when editing */}
+        {editingId && (
+          <button
+            type="button"
+            onClick={() => {
+              handleDelete(editingId);
+              setShowModal(false);
+            }}
+            style={{ backgroundColor: "red", color: "white", marginLeft: "10px" }}
+          >
+            Delete
+          </button>
+        )}
+      </form>
+    </div>
+  </div>
+)}
         {/* Inventory List */}
         <section>
-          <h2>Items</h2>
+          <h2>DATA</h2>
           {loading ? (
             <p>Loading items...</p>
           ) : items.length > 0 ? (
@@ -274,7 +295,6 @@ export default function Home() {
                     <td>{item.description}</td>
                     <td>
                       <button onClick={() => handleEdit(item)}>Edit</button>
-                      <button onClick={() => handleDelete(item._id)}>Delete</button>
                     </td>
                   </tr>
                 ))}
@@ -284,6 +304,10 @@ export default function Home() {
             <p>No inventory items found.</p>
           )}
         </section>
+        <div className="add-button-container">
+          <button onClick={handleAddItemClick}>Add</button>
+        </div>
+
       </div>
     </div>
   );
