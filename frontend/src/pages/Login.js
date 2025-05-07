@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { gapi } from "gapi-script";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const clientId = "901238362479-qhi62371a9f08ma2jmlmbh1vbctruivj.apps.googleusercontent.com";
 
@@ -82,58 +83,60 @@ const Login = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
+    <div className="box">
+      <div className="Logo"></div>
       <h2>{isRegistering ? "Register" : "Login"}</h2>
 
       {/* Manual Login/Register Form */}
       <form onSubmit={handleManualLogin}>
         {isRegistering && (
-          <div>
+          <div className="input">
             <label>Name:</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              style={{ display: "block", width: "100%", marginBottom: "10px" }}
+              //style={{ display: "block", width: "100%", marginBottom: "10px" }}
             />
           </div>
         )}
-        <div>
+        <div className="input">
           <label>Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            style={{ display: "block", width: "100%", marginBottom: "10px" }}
+            //style={{ display: "block", width: "100%", marginBottom: "10px" }}
           />
         </div>
-        <div>
+        <div className="input">
           <label>Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            style={{ display: "block", width: "100%", marginBottom: "10px" }}
+            //style={{ display: "block", width: "100%", marginBottom: "10px" }}
           />
         </div>
-        <button type="submit" style={{ width: "100%", marginBottom: "10px" }}>
+        <button className="button">
           {isRegistering ? "Register" : "Login"}
         </button>
       </form>
 
-      <button onClick={handleGoogleLogin} style={{ width: "100%", marginBottom: "10px" }}>
-        Sign in with Google
+      <button onClick={handleGoogleLogin} className="GoogleButton">
+        <div className="GoogleImage"></div>
+        <div className="Google">Google</div>
       </button>
 
-      <p style={{ textAlign: "center" }}>
+      <p className="BottomPart">
         {isRegistering ? "Already have an account?" : "Don't have an account?"}{" "}
         <button
           type="button"
           onClick={() => setIsRegistering(!isRegistering)}
-          style={{ background: "none", color: "blue", border: "none", cursor: "pointer" }}
+          //style={{ background: "none", color: "black", border: "none", cursor: "pointer" }}
         >
           {isRegistering ? "Login" : "Register"}
         </button>
