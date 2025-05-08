@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url("C:\Users\Joshua\Downloads\SYSTEM INTEG\PIMS\PIMS\frontend\src\Image\Group 47950.png");
+    background-image:url('../Image/Group\ 47950.png');
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -24,7 +24,7 @@ body {
 }
 
 .Logo {
-    background-image: url("C:\Users\Joshua\Downloads\SYSTEM INTEG\PIMS\PIMS\frontend\src\Image\Group 47951.png");
+    background-image: url('../Image/Group\ 47951.png');
     padding: 30px;
     width: auto;
     height: auto;
@@ -69,7 +69,7 @@ body {
 
 .GoogleImage {
     display: inline;
-    background-image: url("C:\Users\Joshua\Downloads\SYSTEM INTEG\PIMS\PIMS\frontend\src\Image\7123025_logo_google_g_icon.png");
+    background-image: url('../Image/7123025_logo_google_g_icon.png');
     padding: 25px;
     height: auto;
     background-repeat: no-repeat;
