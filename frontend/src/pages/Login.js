@@ -126,7 +126,7 @@ const Login = () => {
         </button>
       </form>
 
-      <button onClick={handleGoogleLogin} className="GoogleButton">
+      <button onClick={handleGoogleLogin} className="GoogleButton" type="submit">
         <div className="GoogleImage"></div>
         <div className="Google">Google</div>
       </button>
