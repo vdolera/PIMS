@@ -173,6 +173,8 @@
     border-style: solid;
     border-radius: 12px;
     background-color: #F8F6F6;
+    font-size: 13px;
+    color: #606060;
   }
 
   .Search {
@@ -185,6 +187,8 @@
     border-style: solid;
     border-radius: 12px;
     background-color: #F8F6F6;
+    font-size: 13px;
+    color: #606060;
 
   }
   .DataName2{
