@@ -2,9 +2,6 @@
 .container {
   background-color: #ffffff;
     display: flex;
-    position: fixed;
-    height: 100%;
-    width: 100%;
   }
   
   /* Sidebar (Dashboard) */
@@ -16,7 +13,7 @@
     background-color: #ffffff;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     border-right: 1px solid #d9d9d9; /* Light gray right border line */
-    z-index: 20; /* HIGHER to appear on top */
+    z-index: 2; /* HIGHER to appear on top */
     padding-top: 100px; /* Push content below the overlapped navbar */
   }
   
