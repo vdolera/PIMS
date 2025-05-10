@@ -26,7 +26,6 @@
     margin-top: 10%;
     list-style-type: none;
     padding: 0;
-    height: 500px;
   }
   
   .sidebar ul li {
@@ -35,6 +34,10 @@
     border-radius: 5px;
     border-color: #D7D7D7;
     border-style: solid;
+  }
+  .sidebar ul:hover li:hover {
+    background-color:#D7D7D7;
+    cursor: pointer;
   }
   
   .sidebar ul li a {
@@ -220,10 +223,6 @@
     font-size: 16px;
     border-radius: 15px;
     border: 1px solid #2088Bf;
-  }
-
-  form input:hover{
-    background-color: #0fde84;
   }
   
   form input {

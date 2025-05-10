@@ -148,10 +148,13 @@ export default function Home() {
         {/* Sidebar (Dashboard) */}
         <div className="sidebar">
           <div className="Logo-Sidebar"></div>
-          <h2>Dashboard</h2>
+          <h2>Main</h2>
           <ul>
             <li>Dashboard Overview</li>
             <li>Item Management</li>
+          </ul>
+          <h2>Support</h2>
+          <ul>
             <li>Reports</li>
             <li>Settings</li>
           </ul>

@@ -60,6 +60,10 @@
     background-color: #ffffff;
 }
 
+.GoogleButton:hover{
+    background-color: #D7D7D7;
+}
+
 .GoogleImage {
     display: inline;
     background-image: url('../Image/7123025_logo_google_g_icon.png');
