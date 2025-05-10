@@ -175,10 +175,10 @@
   }
 
   .Sort {
-    right: 40%;   
+    right: 35%;   
     position: absolute;
     margin-top: 30px;
-    width: 15%;
+    width: 10%;
     padding: 5px;
     border-color: #0077B6;
     border-style: solid;
@@ -189,10 +189,10 @@
   }
 
   .Search input {
-    right: 5%;
+    right: 80px;
     position: absolute;
     margin-top: 30px;
-    width: 30%;
+    width: 25%;
     padding: 5px;
     border-style: solid;
     border-radius: 12px;
@@ -208,11 +208,21 @@
     background-color: #ffffff;
   }
 
-  .add-button-container, .Edit, .Delete, .Close, .Add-Update, .Logout{
+  .Edit, .Delete, .Close, .Add-Update, .Logout{
     position: relative;
     margin-right: 50px;
     padding: 10px 15px;
     background-color: #0077B6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .add-button-container{
+    position: relative;
+    margin-right: 50px;
+    padding: 10px 15px;
+    background-color: #18b540;
     color: white;
     border: none;
     border-radius: 5px;
@@ -241,6 +251,7 @@
   }
   /* Table styling */
   table {
+    table-layout: fixed;
     width: auto;
     border-collapse: collapse;
   }
@@ -254,8 +265,10 @@
     text-align: center;
     white-space: nowrap;        /* Prevents line breaks */
     overflow: hidden;           /* Hides overflow text */
+    width: 150px;            /* 🔒 Fixed column width (customize as needed) */
+    height: 50px;            /* 🔒 Fixed row height */
+    padding: 8px;
 }
-
   
   tbody td {
     color: #606060;
@@ -265,6 +278,10 @@
     font-weight: 700;
     text-align: center;
     border-bottom: 1px solid #d9d9d9;
+    text-overflow: ellipsis;
+    width: 150px;            /* 🔒 Fixed column width (customize as needed) */
+    height: 50px;            /* 🔒 Fixed row height */
+    padding: 8px;
   }
 
   tbody tr:hover td {

@@ -152,8 +152,8 @@ export default function Home() {
           <div className="Logo-Sidebar"></div>
           <h2>Main</h2>
           <ul>
-            <li>Dashboard Overview</li>
-            <li>Item Management</li>
+            <li>Dashboard</li>
+            <li>Data</li>
           </ul>
           <h2>Support</h2>
           <ul>
@@ -301,16 +301,24 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody>
-                  {items
-                .filter((item) => {
+                {items.filter((item) => {
                   const q = searchQuery.toLowerCase();
-                  return (
+                    return (
+                      item.name.toLowerCase().includes(q) ||
+                      item.brand.toLowerCase().includes(q) ||
+                      item.medicineId.toLowerCase().includes(q)
+                    );
+                  }).length > 0 ? (
+                    items
+                    .filter((item) => {
+                     const q = searchQuery.toLowerCase();
+                    return (
                     item.name.toLowerCase().includes(q) ||
                     item.brand.toLowerCase().includes(q) ||
                     item.medicineId.toLowerCase().includes(q)
                   );
-                })
-                .map((item) => (
+                  })
+                  .map((item) => (
                     <tr key={item._id}>
                       <td>{item.medicineId}</td>
                       <td>{item.name}</td>
@@ -325,8 +333,15 @@ export default function Home() {
                         <button className="Edit" onClick={() => handleEdit(item)}>Edit</button>
                       </td>
                     </tr>
-                  ))}
-                </tbody>
+                    ))
+                  ) : (
+                  <tr>
+                    <td colSpan="10" style={{ textAlign: "center", padding: "1rem", color: "gray" }}>
+                      No data found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
               </table>
               </div>
             ) : (
