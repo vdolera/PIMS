@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './HomePage.css';
 
+
 export default function Home() {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
@@ -20,6 +21,7 @@ export default function Home() {
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -269,12 +271,20 @@ export default function Home() {
           <div className="DataName">
             <h2 className="Data_Label">DATA</h2>
             <div className="Sort"> Sort </div>
-            <div className="Search"> Search </div>
+            <div className="Search">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
           </div>
 
             {loading ? (
               <p>Loading items...</p>
             ) : items.length > 0 ? (
+              <div className="Boxtable">
               <table>
                 <thead className="DataName2">
                   <tr>
@@ -287,10 +297,20 @@ export default function Home() {
                     <th>EXPIRATION DATE</th>
                     <th>PRESCRIPTION REQ.</th>
                     <th>DESCRIPTION</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {items.map((item) => (
+                  {items
+                .filter((item) => {
+                  const q = searchQuery.toLowerCase();
+                  return (
+                    item.name.toLowerCase().includes(q) ||
+                    item.brand.toLowerCase().includes(q) ||
+                    item.medicineId.toLowerCase().includes(q)
+                  );
+                })
+                .map((item) => (
                     <tr key={item._id}>
                       <td>{item.medicineId}</td>
                       <td>{item.name}</td>
@@ -308,6 +328,7 @@ export default function Home() {
                   ))}
                 </tbody>
               </table>
+              </div>
             ) : (
               <p>No inventory items found.</p>
             )}
