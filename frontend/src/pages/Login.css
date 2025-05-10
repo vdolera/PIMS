@@ -47,6 +47,10 @@
     color: aliceblue;
 }
 
+.button:hover{
+    background-color:#005f8a;
+}
+
 .GoogleButton {
     margin-bottom: 10px;
     cursor: pointer;
@@ -118,4 +122,7 @@ button[type=button] {
     border: none;
     background: none;
     text-decoration: underline;
+}
+button[type=button]:hover {
+    color: #004464;
 }
