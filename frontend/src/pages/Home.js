@@ -21,45 +21,47 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc"); // or "desc"
   const [sortType, setSortType] = useState("az");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [isEditable, setIsEditable] = useState(false);
   const [originalItem, setOriginalItem] = useState(null);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [username, setUsername] = useState("Admin"); // default fallback
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const openModal = (item) => {
-    setOriginalItem({ ...item }); // Save original
-    setForm(item); 
-    setEditingId(item._id);
-    setIsEditable(false); // View-only mode by default
-    setShowModal(true);
-  };
+  const fetchItems = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/inventory");
+    const data = await res.json();
+    setItems(data);
+  } catch (err) {
+    console.error("Failed to fetch items:", err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchItems();
-    }
-  }, [navigate]);
+  const token = localStorage.getItem("token");
+  const storedUsername = localStorage.getItem("username"); // Optional, if you store a name
+  if (!token) {
+    navigate("/login");
+  } else {
+    setUsername(storedUsername || "Admin");
+    setShowWelcome(true);
+    fetchItems();
 
-  const fetchItems = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/inventory");
-      const data = await res.json();
-      setItems(data);
-    } catch (err) {
-      console.error("Failed to fetch items:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Auto-hide the welcome message after 3 seconds
+    const timer = setTimeout(() => setShowWelcome(false), 3000);
+
+    return () => clearTimeout(timer); // Clean up
+  }
+}, [navigate]);
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -141,11 +143,14 @@ export default function Home() {
       console.error("Error deleting item:", err);
     }
   };
+const confirmLogout = () => {
+  localStorage.removeItem("token");
+  navigate("/"); // Redirect to login/signup page
+};
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
+const handleLogout = () => {
+  setShowLogoutConfirm(true); // Show confirmation modal
+};
 
   const handleAddItemClick = () => {
     setForm({
@@ -204,7 +209,24 @@ export default function Home() {
 
   return (
     <div className="container">
+      {showLogoutConfirm && (
+        <div className="modal-overlay logout-overlay">
+          <div className="logout-modal">
+            <div className="GIF"></div>
+            <h3 className="logout-title">Are you sure you want to leave?</h3>
+            <div className="logout-buttons">
+              <button onClick={confirmLogout} className="logout-leave">Leave</button>
+              <button onClick={() => setShowLogoutConfirm(false)} className="logout-stay">Stay</button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Sidebar (Dashboard) */}
+      {showWelcome && (
+        <div className="welcome-popup">
+          Welcome back, {username}!
+        </div>
+      )}
       <div className="sidebar">
         <div className="Logo-Sidebar"></div>
         <h2>Main</h2>
