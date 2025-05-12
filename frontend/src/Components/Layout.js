@@ -83,11 +83,10 @@ export default function Layout({ children, username = "Admin", onLogout }) {
             Profile
           </li>
         </ul>
-        <h2>Support</h2>
-        <ul>
-          <li style={{ cursor: 'pointer' }}>Reports</li>
-          <li style={{ cursor: 'pointer' }}>Settings</li>
-        </ul>
+        <h2>Messages</h2>
+        <div className="Messages">
+        </div>
+
       </div>
 
       {/* Main Content */}

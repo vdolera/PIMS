@@ -4,7 +4,6 @@ import './HomePage.css';
 import Layout from '../Components/Layout';
 
 export default function Home() {
-  document.title = "PIMS|Home";
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({
@@ -67,7 +66,7 @@ export default function Home() {
     setForm({ ...form, [name]: transformedValue });
   };
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     const method = editingId ? "PUT" : "POST";
     const url = editingId
@@ -452,7 +451,7 @@ export default function Home() {
                         <th>NAME</th>
                         <th>BRAND</th>
                         <th>DOSAGE FORM</th>
-                        <th>STOCKS</th>
+                        <th>DOSAGE</th>
                         <th>PRICE</th>
                         <th>EXPIRATION DATE</th>
                         <th>PRESCRIPTION REQ.</th>
@@ -473,7 +472,7 @@ export default function Home() {
                             <td>{item.brand}</td>
                             <td>{item.dosageForm}</td>
                             <td>{item.quantity}</td>
-                            <td>₱{item.price}</td>
+                            <td>${item.price}</td>
                             <td>{item.expirationDate?.split("T")[0]}</td>
                             <td>{item.prescriptionRequired ? "Yes" : "No"}</td>
                             <td>{item.description}</td>

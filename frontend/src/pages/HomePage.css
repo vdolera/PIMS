@@ -232,6 +232,7 @@
     border-style: solid;
     border-radius: 12px;
     background-color: #F8F6F6;
+    border-color: #005f8a;
     font-size: 13px;
     color: #606060;
   }
@@ -376,6 +377,7 @@
     align-items: center;
     z-index: 1000; /* Ensure modal appears above other content */
   }
+  
   .modal input{
     color:#606060;
   }
@@ -424,8 +426,31 @@
     height: 500px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: fixed;
+    animation: fadeIn 0.3s ease forwards;
+    z-index: 1000;
+     transform: translateY(-20px);
+    opacity: 0;
+    animation: slideUp 0.3s ease forwards;
+    }
+
+  @keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
   }
+  to {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Keyframes for modal content */
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+  
   
   .add-button-container {
     margin-bottom: 20px;
@@ -519,21 +544,21 @@
   position: absolute;
   margin-top: 10px;
   height: 30px;
-  background-color: #a3c5d4;
+  background-color: #e5e5e5;
   padding: 10px;
   border-radius: 5px;
 }
 .Loading-top2{
   position: absolute;
   margin-top: 100px;
-  background-color: #a3c5d4;
+  background-color: #e5e5e5;
   padding: 10px;
   border-radius: 5px;
 }
 .Loading-top3{
   position: absolute;
   margin-top: 200px;
-  background-color: #a3c5d4;
+  background-color: #e5e5e5;
   padding: 10px;
   border-radius: 5px;
 }
@@ -541,7 +566,7 @@
 .Loading-top4{
   position: absolute;
   margin-top: 300px;
-  background-color: #a3c5d4;
+  background-color: #e5e5e5;
   padding: 10px;
   border-radius: 5px;
 }
@@ -549,7 +574,7 @@
   position: absolute;
   margin-top: 400px;
   height: 150;
-  background-color: #a3c5d4;
+  background-color: #e5e5e5;
   padding: 10px;
   border-radius: 5px;
 }

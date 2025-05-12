@@ -1,12 +1,4 @@
-.sa{
-    display: absolute;
-    position: absolute;
-    height: 10%;
-    width: 100%;
-    bottom: 0;
-    right: 0;
-    background-color: aqua;
-}
+
 
 .welcome-popup {
   position: fixed;
@@ -20,6 +12,15 @@
   z-index: 9999;
   font-size: 16px;
   animation: fadeInOut 3s ease-in-out;
+}
+
+.Messages{
+  height: 50%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border-color: #D7D7D7;
+  border-style: solid;
+  overflow-y: scroll;
 }
 
 @keyframes fadeInOut {
@@ -43,4 +44,41 @@
     transform: translateY(-10px);
     animation-timing-function: ease-in;
   }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Logout Modal Animation */
+.logout-modal {
+  animation: popIn 0.3s ease-out forwards;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  max-width: 400px;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Modal overlay */
+.logout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
 }

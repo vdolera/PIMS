@@ -18,6 +18,10 @@
     border-radius: 10px;
     border-color: #D7D7D7;
     border-style: solid;
+    background-image: url('../Image/PFP1.png');
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position: center;
 }
 .UserDeets{
 
@@ -43,12 +47,17 @@
 
 .textbox{
     margin-top: 5px;
-    height: 50px;
+    height: 35px;
     width: auto;
-    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     border-color: #D7D7D7;
     border-style: solid;
+    text-align: left;
+    margin-top: 5px;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .UserDeets2{
     display: fixed;
@@ -95,4 +104,48 @@
   50% {
     opacity: 0.4;
   }
+}
+
+.image1{
+    position: fixed;
+    background-color: #e5e5e5;
+    height: 200px;
+    width: 250px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+.UserDeets1{
+
+    position: absolute;
+    background-color: #e5e5e5;
+    left: 20px;
+    top: 250px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 10px;
+}
+
+.Name1{
+    display: fixed;
+    margin-top: 20px;
+    color: white;
+}
+.Admin-ID1{
+    display: fixed;
+    margin-top: 20px;
+    color: white;
+}
+
+.textbox1{
+    margin-top: 5px;
+    height: 50px;
+    width: auto;
+    background-color: #e5e5e5;
+    border-radius: 10px;
+}
+.UserDeets21{
+    display: fixed;
+    width: 500px;
+    height: 200px;
+    margin-left: 270px;
 }

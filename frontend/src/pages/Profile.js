@@ -16,7 +16,7 @@ export default function Profile() {
     // Simulate loading delay (e.g., fetching profile data)
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 1500); // 1.5s like your animation
+    }, 2000); // 1.5s like your animation
 
     return () => clearTimeout(timeout);
   }, []);
@@ -26,26 +26,26 @@ export default function Profile() {
       <div className='Profile-Content'>
         {loading ? (
           <div className="skeleton-loader">
-            <div className='image'></div>
-            <div className='UserDeets2'>
-              <div className='Name'>
-                <div className='textbox'></div>
+            <div className='image1'></div>
+            <div className='UserDeets21'>
+              <div className='Name1'>s
+                <div className='textbox1'></div>
               </div>
-              <div className='Admin-ID'>
-                <div className='textbox'></div>
+              <div className='Admin-ID1'>s
+                <div className='textbox1'></div>
               </div>
             </div>
-            <div className='UserDeets'></div>
+            <div className='UserDeets1'></div>
           </div>
         ) : (
           <>
             <div className='image'></div>
             <div className='UserDeets2'>
               <div className='Name'>Name
-                <div className='textbox'></div>
+                <div className='textbox'>Joshua R. Castanea</div>
               </div>
               <div className='Admin-ID'>Admin ID
-                <div className='textbox'></div>
+                <div className='textbox'>12-00138</div>
               </div>
             </div>
             <div className='UserDeets'></div>
