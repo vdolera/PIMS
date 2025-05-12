@@ -86,7 +86,7 @@
     height: 19px;
     padding: 20px;
     border-style: solid;
-    border-color: #D7D7D7;
+    border-color: #d7d7d7;
     background-color: #ffffff;
     z-index: 1;
   }
@@ -346,8 +346,7 @@
   }
 
   tbody tr:hover td {
-    border-bottom: 2px solid #000000;
-    border-top: 2px solid #000000;
+    background-color:#D7D7D7;
   }
 
   
@@ -439,43 +438,6 @@
     height: 33px;           /* Fixed height */
   }
 
-  .welcome-popup {
-  position: fixed;
-  bottom: 100px; 
-  right: 20px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  font-size: 16px;
-  animation: fadeInOut 3s ease-in-out;
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-    animation-timing-function: ease-out;
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(0);
-    animation-timing-function: ease-in-out;
-  }
-  80% {
-    opacity: 1;
-    transform: translateY(0);
-    animation-timing-function: ease-in-out;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-10px);
-    animation-timing-function: ease-in;
-  }
-}
-
 .logout-overlay {
   position: fixed;
   top: 0;
@@ -540,4 +502,75 @@
   width: 200px;
   background-size: 200px;
   margin-left: 20%;
+}
+
+.Loading {
+  position: absolute;
+    margin-top: 150px;
+    bottom: 80px;
+    top: 40px;
+    right: 40px;
+    left: 270px;
+    width: auto;
+    height: auto;
+}
+
+.Loading-top{
+  position: absolute;
+  margin-top: 10px;
+  height: 30px;
+  background-color: #a3c5d4;
+  padding: 10px;
+  border-radius: 5px;
+}
+.Loading-top2{
+  position: absolute;
+  margin-top: 100px;
+  background-color: #a3c5d4;
+  padding: 10px;
+  border-radius: 5px;
+}
+.Loading-top3{
+  position: absolute;
+  margin-top: 200px;
+  background-color: #a3c5d4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.Loading-top4{
+  position: absolute;
+  margin-top: 300px;
+  background-color: #a3c5d4;
+  padding: 10px;
+  border-radius: 5px;
+}
+.Loading-top5{
+  position: absolute;
+  margin-top: 400px;
+  height: 150;
+  background-color: #a3c5d4;
+  padding: 10px;
+  border-radius: 5px;
+}
+.Loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Optional: Differentiated widths for variety */
+.Loading-top th:nth-child(1),
+.Loading-top2 th:nth-child(1),
+.Loading-top3 th:nth-child(1),
+.Loading-top4 th:nth-child(1),
+.Loading-top5 th:nth-child(1) {
+  width: 12rem;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }

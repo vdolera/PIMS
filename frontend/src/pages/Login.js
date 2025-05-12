@@ -14,16 +14,21 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const initClient = () => {
-      gapi.load("client:auth2", () => {
-        gapi.client.init({
-          clientId: clientId,
-          scope: "https://www.googleapis.com/auth/classroom.courses.readonly",
-        });
+  const initClient = () => {
+    gapi.load("client:auth2", () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "https://www.googleapis.com/auth/classroom.courses.readonly",
+      }).then(() => {
+        const authInstance = gapi.auth2.getAuthInstance();
+        if (authInstance.isSignedIn.get()) {
+          authInstance.signOut(); // Force logout on page load
+        }
       });
-    };
-    initClient();
-  }, []);
+    });
+  };
+  initClient();
+}, []);
 
   const handleGoogleLogin = () => {
     const authInstance = gapi.auth2.getAuthInstance();
