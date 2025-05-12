@@ -67,7 +67,7 @@ const Login = () => {
         if (data.token || data.success) {
           if (data.token) {
             localStorage.setItem("token", data.token);
-            localStorage.setItem("username", data.user.name); // 👈 Store the user's name
+            localStorage.setItem("username", data.user.name); //Store the user's name
             navigate("/home");
           } else {
             alert("Registration successful. Please log in.");
