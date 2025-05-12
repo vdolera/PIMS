@@ -599,3 +599,36 @@
     opacity: 0.4;
   }
 }
+.Boxtable {
+  background-color: white;
+  opacity: 1;
+}
+
+.DataName2 {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+/* Animation for table rows */
+.fade-in-row {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s forwards;
+}
+
+.fade-in-row:nth-child(1) { animation-delay: 0.3s; }
+.fade-in-row:nth-child(2) { animation-delay: 0.45s; }
+.fade-in-row:nth-child(3) { animation-delay: 0.6s; }
+.fade-in-row:nth-child(4) { animation-delay: 0.75s; }
+.fade-in-row:nth-child(5) { animation-delay: 0.9s; }
+.fade-in-row:nth-child(6) { animation-delay: 1.05s; }
+/* Add more as needed */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -4,6 +4,7 @@ import Layout from '../Components/Layout';
 import './Profile.css';
 
 export default function Profile() {
+  const username = "Admin";
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +43,7 @@ export default function Profile() {
             <div className='image'></div>
             <div className='UserDeets2'>
               <div className='Name'>Name
-                <div className='textbox'>Joshua R. Castanea</div>
+                <div className='textbox'>{username}</div>
               </div>
               <div className='Admin-ID'>Admin ID
                 <div className='textbox'>12-00138</div>

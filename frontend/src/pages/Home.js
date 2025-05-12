@@ -4,6 +4,7 @@ import './HomePage.css';
 import Layout from '../Components/Layout';
 
 export default function Home() {
+  document.title = "PIMS|Home";
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({
@@ -66,7 +67,7 @@ export default function Home() {
     setForm({ ...form, [name]: transformedValue });
   };
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const method = editingId ? "PUT" : "POST";
     const url = editingId
@@ -451,7 +452,7 @@ export default function Home() {
                         <th>NAME</th>
                         <th>BRAND</th>
                         <th>DOSAGE FORM</th>
-                        <th>DOSAGE</th>
+                        <th>STOCKS</th>
                         <th>PRICE</th>
                         <th>EXPIRATION DATE</th>
                         <th>PRESCRIPTION REQ.</th>
@@ -460,32 +461,33 @@ export default function Home() {
                       </tr>
                     </thead>
                     <tbody>
-                      {sortedItems.length > 0 ? (
-                        sortedItems.map((item) => (
-                          <tr
-                            key={item._id}
-                            onClick={() => handleEdit(item)}
-                            style={{ cursor: "pointer" }}
-                          >
-                            <td>{item.medicineId}</td>
-                            <td>{item.name}</td>
-                            <td>{item.brand}</td>
-                            <td>{item.dosageForm}</td>
-                            <td>{item.quantity}</td>
-                            <td>${item.price}</td>
-                            <td>{item.expirationDate?.split("T")[0]}</td>
-                            <td>{item.prescriptionRequired ? "Yes" : "No"}</td>
-                            <td>{item.description}</td>
-                          </tr>
-                        ))
-                      ) : (
-                        <tr>
-                          <td colSpan="10" style={{ textAlign: "center", padding: "1rem", color: "gray" }}>
-                            No data found.
-                          </td>
+                    {sortedItems.length > 0 ? (
+                      sortedItems.map((item, index) => (
+                        <tr
+                          key={item._id}
+                          className="fade-in-row"
+                          onClick={() => handleEdit(item)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <td>{item.medicineId}</td>
+                          <td>{item.name}</td>
+                          <td>{item.brand}</td>
+                          <td>{item.dosageForm}</td>
+                          <td>{item.quantity}</td>
+                          <td>₱{item.price}</td>
+                          <td>{item.expirationDate?.split("T")[0]}</td>
+                          <td>{item.prescriptionRequired ? "Yes" : "No"}</td>
+                          <td>{item.description}</td>
                         </tr>
-                      )}
-                    </tbody>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="10" style={{ textAlign: "center", padding: "1rem", color: "gray" }}>
+                          No data found.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
                   </table>
                 </div>
               ) : (
