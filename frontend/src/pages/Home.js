@@ -451,7 +451,7 @@ export default function Home() {
                         <th>NAME</th>
                         <th>BRAND</th>
                         <th>DOSAGE FORM</th>
-                        <th>DOSAGE</th>
+                        <th>STOCKS</th>
                         <th>PRICE</th>
                         <th>EXPIRATION DATE</th>
                         <th>PRESCRIPTION REQ.</th>
@@ -472,7 +472,7 @@ export default function Home() {
                             <td>{item.brand}</td>
                             <td>{item.dosageForm}</td>
                             <td>{item.quantity}</td>
-                            <td>${item.price}</td>
+                            <td>₱{item.price}</td>
                             <td>{item.expirationDate?.split("T")[0]}</td>
                             <td>{item.prescriptionRequired ? "Yes" : "No"}</td>
                             <td>{item.description}</td>

@@ -14,21 +14,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-  const initClient = () => {
-    gapi.load("client:auth2", () => {
-      gapi.client.init({
-        clientId: clientId,
-        scope: "https://www.googleapis.com/auth/classroom.courses.readonly",
-      }).then(() => {
-        const authInstance = gapi.auth2.getAuthInstance();
-        if (authInstance.isSignedIn.get()) {
-          authInstance.signOut(); // Force logout on page load
-        }
+    const initClient = () => {
+      gapi.load("client:auth2", () => {
+        gapi.client.init({
+          clientId: clientId,
+          scope: "https://www.googleapis.com/auth/classroom.courses.readonly",
+        });
       });
-    });
-  };
-  initClient();
-}, []);
+    };
+    initClient();
+  }, []);
 
   const handleGoogleLogin = () => {
     const authInstance = gapi.auth2.getAuthInstance();
@@ -72,6 +67,7 @@ const Login = () => {
         if (data.token || data.success) {
           if (data.token) {
             localStorage.setItem("token", data.token);
+            localStorage.setItem("username", data.user.name); // 👈 Store the user's name
             navigate("/home");
           } else {
             alert("Registration successful. Please log in.");
@@ -88,8 +84,7 @@ const Login = () => {
   };
 
   return (
-    <div className="background">
-      <div className="box">
+    <div className="box">
       <div className="Logo"></div>
       <h2>{isRegistering ? "Register" : "Login"}</h2>
 
@@ -147,7 +142,6 @@ const Login = () => {
           {isRegistering ? "Login" : "Register"}
         </button>
       </p>
-    </div>
     </div>
   );
 };
