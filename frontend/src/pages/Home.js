@@ -4,6 +4,7 @@ import './HomePage.css';
 import Layout from '../Components/Layout';
 
 export default function Home() {
+  document.title = "PIMS | Home";
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({
