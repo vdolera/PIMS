@@ -88,7 +88,6 @@ const Login = () => {
       <div className="Logo"></div>
       <h2>{isRegistering ? "Register" : "Login"}</h2>
       <div>
-      <InventoryList />
     </div>
       {/* Manual Login/Register Form */}
       <form onSubmit={handleManualLogin}>
