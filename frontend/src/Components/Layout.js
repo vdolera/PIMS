@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"; 
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Layou.css';
+import DateTimeDisplay from "./DateTimeDisplay";
 
 export default function Layout({ children, username = "Admin", onLogout }) {
   const navigate = useNavigate();
@@ -64,25 +65,19 @@ export default function Layout({ children, username = "Admin", onLogout }) {
         <div className="Logo-Sidebar"></div>
         <h2>Main</h2>
         <ul>
-          <li
-            onClick={() => navigate('/home')}
-            style={{
-              cursor: 'pointer',
-              backgroundColor: isActive('/home') ? '#D7D7D7' : 'transparent'
-            }}
-          >
-            Data
-          </li>
-          <li
-            onClick={() => navigate('/profile')}
-            style={{
-              cursor: 'pointer',
-              backgroundColor: isActive('/profile') ? '#D7D7D7' : 'transparent'
-            }}
-          >
-            Profile
-          </li>
-        </ul>
+        <li
+          onClick={() => navigate('/home')}
+          className={`nav-item MainButtons ${isActive('/home') ? 'active' : ''}`}
+        >
+          Data
+        </li>
+        <li
+          onClick={() => navigate('/profile')}
+          className={`nav-item MainButtons ${isActive('/profile') ? 'active' : ''}`}
+        >
+          Profile
+        </li>
+      </ul>
         <h2>Messages</h2>
         <div className="Messages">
         </div>
@@ -92,6 +87,7 @@ export default function Layout({ children, username = "Admin", onLogout }) {
       {/* Main Content */}
       <div className="Right-content">
         <div className="Header">
+          <div className="datetime"><DateTimeDisplay /></div>
           <div className="Profile-box">
             <div className="profile"></div>
             <div className="Profile-Logout">

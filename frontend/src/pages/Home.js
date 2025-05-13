@@ -461,33 +461,33 @@ export default function Home() {
                       </tr>
                     </thead>
                     <tbody>
-                    {sortedItems.length > 0 ? (
-                      sortedItems.map((item, index) => (
-                        <tr
-                          key={item._id}
-                          className="fade-in-row"
-                          onClick={() => handleEdit(item)}
-                          style={{ cursor: "pointer" }}
-                        >
-                          <td>{item.medicineId}</td>
-                          <td>{item.name}</td>
-                          <td>{item.brand}</td>
-                          <td>{item.dosageForm}</td>
-                          <td>{item.quantity}</td>
-                          <td>₱{item.price}</td>
-                          <td>{item.expirationDate?.split("T")[0]}</td>
-                          <td>{item.prescriptionRequired ? "Yes" : "No"}</td>
-                          <td>{item.description}</td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan="10" style={{ textAlign: "center", padding: "1rem", color: "gray" }}>
-                          No data found.
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
+  {sortedItems.length > 0 ? (
+    sortedItems.map((item, index) => (
+      <tr
+        key={item._id}
+        className="fade-in-row"
+        style={{ animationDelay: `${0.15 * index}s`, cursor: "pointer" }}
+        onClick={() => handleEdit(item)}
+      >
+        <td>{item.medicineId}</td>
+        <td>{item.name}</td>
+        <td>{item.brand}</td>
+        <td>{item.dosageForm}</td>
+        <td>{item.quantity}</td>
+        <td>₱{item.price}</td>
+        <td>{item.expirationDate?.split("T")[0]}</td>
+        <td>{item.prescriptionRequired ? "Yes" : "No"}</td>
+        <td>{item.description}</td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td colSpan="10" style={{ textAlign: "center", padding: "1rem", color: "gray" }}>
+        No data found.
+      </td>
+    </tr>
+  )}
+</tbody>
                   </table>
                 </div>
               ) : (
