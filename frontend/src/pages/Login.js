@@ -14,6 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
+    document.title = "PIMS | Login";
     const initClient = () => {
       gapi.load("client:auth2", () => {
         gapi.client.init({
