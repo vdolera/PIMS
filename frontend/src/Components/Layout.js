@@ -66,7 +66,7 @@ export default function Layout({ children, username = "Admin", onLogout }) {
         <div className="Logo-Sidebar"></div>
 
         <div className="UserProfile"></div>
-        <h3 className="NameSidebar">Mr. {firstName}</h3>
+        <h3 className="NameSidebar">{firstName}</h3>
         <h6 className="adminSidebar">Admin</h6>
         <h2>Main</h2>
         <ul>
