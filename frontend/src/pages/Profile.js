@@ -9,6 +9,7 @@ export default function Profile() {
   const [username, setUsername] = useState("Admin"); // fallback value
 
   useEffect(() => {
+    document.title = "PIMS | Profile";
     // Simulate loading and fetch username
     const timeout = setTimeout(() => {
       const storedUsername = localStorage.getItem("username");
