@@ -112,6 +112,7 @@
     border-radius: 5px;
     border-color: #D7D7D7;
     border-style: solid;
+    text-align: center;
   }
   .sidebar ul:hover li:hover {
     cursor: pointer;
@@ -156,4 +157,32 @@
 .datetime{
   position: absolute;
   right: 280px;
+}
+
+.LogoData{
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background-image: url('../Image/Database.svg');
+  
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+.LogoProfile{
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background-image: url('../Image/Group\ 47952.svg');
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+/* ACTIVE STATE (when on current page) */
+.LogoData.active-icon {
+  background-image: url('../Image/Database\ \(1\).svg'); /* brighter or colored version */
+}
+
+.LogoProfile.active-icon {
+  background-image: url('../Image/Vector.svg');
 }

@@ -69,16 +69,18 @@ export default function Layout({ children, username = "Admin", onLogout }) {
           onClick={() => navigate('/home')}
           className={`nav-item MainButtons ${isActive('/home') ? 'active' : ''}`}
         >
+           <div className={`LogoData ${isActive('/home') ? 'active-icon' : ''}`}></div>
           Data
         </li>
         <li
           onClick={() => navigate('/profile')}
           className={`nav-item MainButtons ${isActive('/profile') ? 'active' : ''}`}
         >
+          <div className={`LogoProfile ${isActive('/profile') ? 'active-icon' : ''}`}></div>
           Profile
         </li>
       </ul>
-        <h2>Messages</h2>
+        <h2>Logs</h2>
         <div className="Messages">
         </div>
 

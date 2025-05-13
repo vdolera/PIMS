@@ -218,6 +218,7 @@ export default function Home() {
                     onChange={handleChange}
                     readOnly={!isEditable}
                     required
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
                   <input
                     type="text"
@@ -227,6 +228,7 @@ export default function Home() {
                     onChange={handleChange}
                     readOnly={!isEditable}
                     required
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
                   <input
                     type="text"
@@ -236,6 +238,7 @@ export default function Home() {
                     onChange={handleChange}
                     readOnly={!isEditable}
                     required
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
                   <input
                     type="text"
@@ -245,6 +248,7 @@ export default function Home() {
                     onChange={handleChange}
                     readOnly={!isEditable}
                     required
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
                   <input
                     type="number"
@@ -255,6 +259,7 @@ export default function Home() {
                     readOnly={!isEditable}
                     min={1}
                     required
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
                   <input
                     type="number"
@@ -265,6 +270,7 @@ export default function Home() {
                     readOnly={!isEditable}
                     min={0}
                     required
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
                   <input
                     type="date"
@@ -274,6 +280,7 @@ export default function Home() {
                     onChange={handleChange}
                     readOnly={!isEditable}
                     required
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
                   <label>
                     <input
@@ -294,6 +301,7 @@ export default function Home() {
                     value={form.description}
                     onChange={handleChange}
                     readOnly={!isEditable}
+                    className={isEditable ? "editable-input" : "readonly-input"}
                   />
 
                   {/* Conditionally render buttons */}
