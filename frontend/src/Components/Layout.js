@@ -7,7 +7,8 @@ export default function Layout({ children, username = "Admin", onLogout }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const [showWelcome, setShowWelcome] = useState(false); // Initialize as false
+  const [showWelcome, setShowWelcome] = useState(false); // Initialize as false\
+  const firstName = username.split(' ')[0];
 
   const confirmLogout = () => {
     localStorage.removeItem("token");
@@ -43,7 +44,7 @@ export default function Layout({ children, username = "Admin", onLogout }) {
       {/* ✅ Welcome Popup */}
       {showWelcome && (
         <div className="welcome-popup">
-          Welcome back, {username}!
+          Welcome back, {firstName}!
         </div>
       )}
 
@@ -63,6 +64,10 @@ export default function Layout({ children, username = "Admin", onLogout }) {
       {/* Sidebar */}
       <div className="sidebar">
         <div className="Logo-Sidebar"></div>
+
+        <div className="UserProfile"></div>
+        <h3 className="NameSidebar">Mr. {firstName}</h3>
+        <h6 className="adminSidebar">Admin</h6>
         <h2>Main</h2>
         <ul>
         <li
@@ -77,12 +82,9 @@ export default function Layout({ children, username = "Admin", onLogout }) {
           className={`nav-item MainButtons ${isActive('/profile') ? 'active' : ''}`}
         >
           <div className={`LogoProfile ${isActive('/profile') ? 'active-icon' : ''}`}></div>
-          Profile
+          Prescriptions
         </li>
       </ul>
-        <h2>Logs</h2>
-        <div className="Messages">
-        </div>
 
       </div>
 

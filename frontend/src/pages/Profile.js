@@ -1,59 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../Components/Layout';
 import './Profile.css';
+import InventoryList from "../Components/InventoryList";
 
 export default function Profile() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState("Admin"); // fallback value
-
-  useEffect(() => {
-    document.title = "PIMS | Profile";
-    // Simulate loading and fetch username
-    const timeout = setTimeout(() => {
-      const storedUsername = localStorage.getItem("username");
-      if (storedUsername) {
-        setUsername(storedUsername);
-      }
-      setLoading(false);
-    }, 2000); // 2s delay like animation
-
-    return () => clearTimeout(timeout);
-  }, []);
+  const username = localStorage.getItem("username") || "Admin";
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("username"); // optional: clear username on logout
+    localStorage.removeItem("username");
     navigate("/login");
   };
 
   return (
     <Layout username={username} onLogout={handleLogout}>
       <div className='Profile-Content'>
-        {loading ? (
-          <div className="skeleton-loader">
-            <div className='image1'></div>
-            <div className='UserDeets21'>
-              <div className='Name1'>s<div className='textbox1'></div></div>
-              <div className='Admin-ID1'>s<div className='textbox1'></div></div>
-            </div>
-            <div className='UserDeets1'></div>
-          </div>
-        ) : (
-          <>
-            <div className='image'></div>
-            <div className='UserDeets2'>
-              <div className='Name'>Name
-                <div className='textbox'>{username}</div>
-              </div>
-              <div className='Admin-ID'>Admin ID
-                <div className='textbox'>12-00138</div>
-              </div>
-            </div>
-            <div className='UserDeets'></div>
-          </>
-        )}
+        <div className='image'>
+          <h2 className="Data_Label">Prescriptions</h2>
+        </div>
+        <div className='Docinfo'>
+          <h3 className='FontData'> Hospital Hotlines</h3>
+          <h6 className='FontData1' >NURSE STATION 1</h6>
+          <h6 className='FontData'># (51) 472-4025</h6>
+          <h6 className='FontData1'>NURSE STATION 1</h6>
+          <h6 className='FontData'># (51) 472-4025</h6>
+          <p className='credits'>© 2025 St. Ignatius Medical Center, Ateneo Avenue, Naga City, 4400 Philippines</p>
+        </div>
+        <div className='UserDeets'>
+          <input
+            type="text"
+            placeholder="Search by doctor's name..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="inventory-search-bar"
+          />
+          <InventoryList searchQuery={searchQuery} />
+        </div>
       </div>
     </Layout>
   );
