@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/inventory';
+const API_URL = 'https://pims-d.onrender.com/inventory';
 
 export const fetchInventory = async () => {
     try {

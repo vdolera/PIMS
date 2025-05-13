@@ -494,7 +494,7 @@ export default function Home() {
               )}
             </section>
           </div>
-
+        
           <div className="Footer">
             <div className="add">
               <button onClick={handleAddItemClick} className="add-button-container">Add</button>

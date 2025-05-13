@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-        const response = await axios.get('http://localhost:5000/inventory');
+        const response = await axios.get('https://prms-test.onrender.com/api/patients');
         res.json(response.data);
     } catch (error) {
         console.error(error);

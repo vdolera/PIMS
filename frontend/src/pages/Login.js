@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { gapi } from "gapi-script";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-
+import InventoryList from "../Components/InventoryList";
 const clientId = "901238362479-qhi62371a9f08ma2jmlmbh1vbctruivj.apps.googleusercontent.com";
 
 //Google Api login
@@ -67,7 +67,7 @@ const Login = () => {
         if (data.token || data.success) {
           if (data.token) {
             localStorage.setItem("token", data.token);
-            localStorage.setItem("username", data.user.name); // 👈 Store the user's name
+            localStorage.setItem("username", data.user.name); //Store the user's name
             navigate("/home");
           } else {
             alert("Registration successful. Please log in.");
@@ -87,7 +87,9 @@ const Login = () => {
     <div className="box">
       <div className="Logo"></div>
       <h2>{isRegistering ? "Register" : "Login"}</h2>
-
+      <div>
+      <InventoryList />
+    </div>
       {/* Manual Login/Register Form */}
       <form onSubmit={handleManualLogin}>
         {isRegistering && (

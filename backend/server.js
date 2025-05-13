@@ -6,6 +6,7 @@ const passport = require("passport");
 
 const authRoutes = require("./routes/auth");
 const Inventory = require("./models/inventory");
+const inventoryRoutes = require('./routes/api/inventoryRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,6 +25,9 @@ app.use(passport.initialize());
 
 // Routes
 app.use("/auth", authRoutes);
+app.use('/api/prescriptions', inventoryRoutes);
+
+
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
