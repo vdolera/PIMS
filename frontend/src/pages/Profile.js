@@ -19,7 +19,7 @@ export default function Profile() {
     <Layout username={username} onLogout={handleLogout}>
       <div className='Profile-Content'>
         <div className='image'>
-          <h2 className="Data_Label">Prescriptions</h2>
+          <h2 className="Data_Label">PRESCRIPTIONS</h2>
         </div>
         <div className='Docinfo'>
           <h3 className='FontData'> Hospital Hotlines</h3>
